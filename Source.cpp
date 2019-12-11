@@ -12,6 +12,8 @@ void ItemGen();
 string stuff[5] = { "torch", "sword", "key", "shield", "air" };
 bool items[5] = { false, false, false, false, false };
 
+int PlayerHealth = 100;
+enum MonsterType { skeleton, silverfish, couple, EssenceOfCave };
 int main() {
 	srand(time(NULL));
 
@@ -28,36 +30,36 @@ int main() {
 
 	cout << "DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD" << endl;
 	cout << "DDDPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP)DD" << endl;
-	cout << "DDD····DD·)Db)DDDD··QDb··DDDDb·)Db··)DDDD·pDb·pDb···QDDDbp)DD·DDp)Db·pDDDp···)DD" << endl;
-	cout << "DDD····DDDDDP)DDDb·pDQDb·QDC)Db)Db··)DDDb·)Db·)Db···)DP·DD)DD·DDDDDb)DC·)DP··)DD" << endl;
-	cout << "DDD···)DD·)Db)DDDD)DPPDDCDDDDP·)DDDD)DDDDPDDP·DDP···DDDDPP)DD·DD·DDb·SDDDP···)DD" << endl;
-	cout << "DDD·······················································p··················)DD" << endl;
-	cout << "DDD·····················································)QDDDDDppp···········)DD" << endl;
-	cout << "DDD····································ppppDDDppppp··ppDDDDDDDDDDDDDbp·······)DD" << endl;
-	cout << "DDD·······················ppbDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDb·····)DD" << endl;
-	cout << "DDD··················pppDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDp···)DD" << endl;
-	cout << "DDD············qppDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDPPDDDDDDDDpp)DD" << endl;
-	cout << "DDD······ppQDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDPP·········PPDDP)DD" << endl;
-	cout << "DDD··pDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDPP···················)DD" << endl;
-	cout << "DDDpDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDP·····················)DD" << endl;
-	cout << "DDDDDDPPPPPPPPPPPPPPPPDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDPQbpp····················)DD" << endl;
-	cout << "DDDDD···················)PPPDDDDDDDDDDDDDDDDPP)···Pbp··PPPPSb················)DD" << endl;
-	cout << "DDD·)Dp························QDDDDDDDP·····································)DD" << endl;
-	cout << "DDD····PPep·················pQDDDDDDDP·······································)DD" << endl;
-	cout << "DDD····················ppDDDDDDDDDDDDC·······································)DD" << endl;
-	cout << "DDD··················)QDDDDPPQDDDDP··········································)DD" << endl;
-	cout << "DDD··················DDDD····DDDP············································)DD" << endl;
-	cout << "DDD················)DDDDP····)DDb············································)DD" << endl;
-	cout << "DDD·················QDDDP·····)DDp···········································)DD" << endl;
-	cout << "DDD··················DDDDDp···)DDDDpppp······································)DD" << endl;
-	cout << "DDD···························DDDDDDDDDPP····································)DD" << endl;
-	cout << "DDD··········································································)DD" << endl;
-	cout << "DDD··········································································)DD" << endl;
-	cout << "DDD····pDDDb···DDb··DDb·pDD·DDDDP···QDbqDDDDPDDPDDP)DDDDp·DDP·pDDDb··DDb·····)DD" << endl;
-	cout << "DDD···)DD·)Qp·pDDDb·QDDbDDD·DDbpP···DDP··DDP·DDCQDP)DP·DDPDDPQDP·)Db·DDp·····)DD" << endl;
-	cout << "DDD···)DDppDb)DDDDD·QDDDPDD·DDQpp···pDD··DDC·DDpDDP)DbpDD·DDP)DbpDDP)QDD·····)DD" << endl;
-	cout << "DDD·····PPPPPPPP·PPSPPSP·PP·PPPPS···PP···PP··PPPPP·PPPPP··PPS·)PPPP··PP······)DD" << endl;
-	cout << "DDDu·········································································)DD" << endl;
+	cout << "DDDÂ·Â·Â·Â·DDÂ·)Db)DDDDÂ·Â·QDbÂ·Â·DDDDbÂ·)DbÂ·Â·)DDDDÂ·pDbÂ·pDbÂ·Â·Â·QDDDbp)DDÂ·DDp)DbÂ·pDDDpÂ·Â·Â·)DD" << endl;
+	cout << "DDDÂ·Â·Â·Â·DDDDDP)DDDbÂ·pDQDbÂ·QDC)Db)DbÂ·Â·)DDDbÂ·)DbÂ·)DbÂ·Â·Â·)DPÂ·DD)DDÂ·DDDDDb)DCÂ·)DPÂ·Â·)DD" << endl;
+	cout << "DDDÂ·Â·Â·)DDÂ·)Db)DDDD)DPPDDCDDDDPÂ·)DDDD)DDDDPDDPÂ·DDPÂ·Â·Â·DDDDPP)DDÂ·DDÂ·DDbÂ·SDDDPÂ·Â·Â·)DD" << endl;
+	cout << "DDDÂ·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·pÂ·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·)DD" << endl;
+	cout << "DDDÂ·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·)QDDDDDpppÂ·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·)DD" << endl;
+	cout << "DDDÂ·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·ppppDDDpppppÂ·Â·ppDDDDDDDDDDDDDbpÂ·Â·Â·Â·Â·Â·Â·)DD" << endl;
+	cout << "DDDÂ·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·ppbDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDbÂ·Â·Â·Â·Â·)DD" << endl;
+	cout << "DDDÂ·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·pppDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDpÂ·Â·Â·)DD" << endl;
+	cout << "DDDÂ·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·qppDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDPPDDDDDDDDpp)DD" << endl;
+	cout << "DDDÂ·Â·Â·Â·Â·Â·ppQDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDPPÂ·Â·Â·Â·Â·Â·Â·Â·Â·PPDDP)DD" << endl;
+	cout << "DDDÂ·Â·pDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDPPÂ·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·)DD" << endl;
+	cout << "DDDpDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDPÂ·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·)DD" << endl;
+	cout << "DDDDDDPPPPPPPPPPPPPPPPDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDPQbppÂ·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·)DD" << endl;
+	cout << "DDDDDÂ·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·)PPPDDDDDDDDDDDDDDDDPP)Â·Â·Â·PbpÂ·Â·PPPPSbÂ·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·)DD" << endl;
+	cout << "DDDÂ·)DpÂ·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·QDDDDDDDPÂ·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·)DD" << endl;
+	cout << "DDDÂ·Â·Â·Â·PPepÂ·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·pQDDDDDDDPÂ·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·)DD" << endl;
+	cout << "DDDÂ·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·ppDDDDDDDDDDDDCÂ·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·)DD" << endl;
+	cout << "DDDÂ·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·)QDDDDPPQDDDDPÂ·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·)DD" << endl;
+	cout << "DDDÂ·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·DDDDÂ·Â·Â·Â·DDDPÂ·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·)DD" << endl;
+	cout << "DDDÂ·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·)DDDDPÂ·Â·Â·Â·)DDbÂ·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·)DD" << endl;
+	cout << "DDDÂ·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·QDDDPÂ·Â·Â·Â·Â·)DDpÂ·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·)DD" << endl;
+	cout << "DDDÂ·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·DDDDDpÂ·Â·Â·)DDDDppppÂ·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·)DD" << endl;
+	cout << "DDDÂ·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·DDDDDDDDDPPÂ·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·)DD" << endl;
+	cout << "DDDÂ·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·)DD" << endl;
+	cout << "DDDÂ·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·)DD" << endl;
+	cout << "DDDÂ·Â·Â·Â·pDDDbÂ·Â·Â·DDbÂ·Â·DDbÂ·pDDÂ·DDDDPÂ·Â·Â·QDbqDDDDPDDPDDP)DDDDpÂ·DDPÂ·pDDDbÂ·Â·DDbÂ·Â·Â·Â·Â·)DD" << endl;
+	cout << "DDDÂ·Â·Â·)DDÂ·)QpÂ·pDDDbÂ·QDDbDDDÂ·DDbpPÂ·Â·Â·DDPÂ·Â·DDPÂ·DDCQDP)DPÂ·DDPDDPQDPÂ·)DbÂ·DDpÂ·Â·Â·Â·Â·)DD" << endl;
+	cout << "DDDÂ·Â·Â·)DDppDb)DDDDDÂ·QDDDPDDÂ·DDQppÂ·Â·Â·pDDÂ·Â·DDCÂ·DDpDDP)DbpDDÂ·DDP)DbpDDP)QDDÂ·Â·Â·Â·Â·)DD" << endl;
+	cout << "DDDÂ·Â·Â·Â·Â·PPPPPPPPÂ·PPSPPSPÂ·PPÂ·PPPPSÂ·Â·Â·PPÂ·Â·Â·PPÂ·Â·PPPPPÂ·PPPPPÂ·Â·PPSÂ·)PPPPÂ·Â·PPÂ·Â·Â·Â·Â·Â·)DD" << endl;
+	cout << "DDDuÂ·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·)DD" << endl;
 	cout << "DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD" << endl;
 	cout << "DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD" << endl;
 
@@ -144,10 +146,10 @@ int main() {
 
 				cout << "You can go North or South again." << endl;
 			}
-			else 
+			else
 				cout << "Where oh where will you choose to go now?" << endl;
 			getline(cin, input);
-			
+
 			if ((input.compare("North") == 0) || (input.compare("north") == 0) || (input.compare("n") == 0) || (input.compare("N") == 0))
 				room = 5;
 
@@ -155,7 +157,7 @@ int main() {
 				room = 2;
 			else
 				cout << "I don't understand what you're saying, I'm but a mere computer, I don't speak English." << endl;
-			
+
 
 
 			break;
@@ -169,7 +171,7 @@ int main() {
 			}
 			else if (items[0] == true) {
 				cout << "Congrats, you have successfully explored around the game enough to not die here. I wonder how long it took you, probably too long I assume." << endl;
-				
+
 				cout << "That still doesn't excuse the fact that you've continued to explore THE cave only heading north. Mix it up a little. You might find something. Probably not though." << endl;
 			}
 			getline(cin, input);
@@ -183,7 +185,9 @@ int main() {
 			cout << endl;
 
 			cout << "You are in the heart of the suburbs. Something about this place feels wrong." << endl
-				 << "Your options are to go east" << endl;
+				<< "Your options are to go east" << endl;
+
+			//BattleSystem(monstergen());
 
 			getline(cin, input);
 			if ((input.compare("South") == 0) || (input.compare("south") == 0) || (input.compare("s") == 0) || (input.compare("S") == 0))
@@ -194,18 +198,29 @@ int main() {
 		case 7:
 			cout << endl;
 			cout << "It seems like you have broken into some random house. What a real moral compass you have." << endl
-				 << "Like many things, that is beside the point. Looking around this is a very plain house."
-				 << "However you do see a magical chest in the living room. Do not question the logic of such a container being placed in some random home in Texas."
-				 << "You can go north."
-				 << endl;
+				<< "Like many things, that is beside the point. Looking around this is a very plain house."
+				<< "However you do see a magical chest in the living room. Do not question the logic of such a container being placed in some random home in Texas."
+				<< "You can go North or West." << endl;
+			if ((input.compare("North") == 0) || (input.compare("north") == 0) || (input.compare("n") == 0) || (input.compare("N") == 0))
+				room = 6;
 
 			break;
-}
+		case 8:
+			cout << endl;
+			cout << "Exploring the house more, you have left the house to the backyard. It's a pretty standard back yard. dunno tho." << endl;
+			break;
+
+		case 9:
+			cout << "The cave has finally turned into a ravine, or something. Don't know what exactly but the cave goes into a different direction." << endl;
+			break;
+		case 10:
+			cout << "It's back to being a cave for the most part. This room will be your unbeing." << endl;
+		}
 
 
 
 	}
-	if (life == 0) {
+	if (life <= 0) {
 		cout << endl;
 		cout << "You are so skilled at this game that you forgot to live. Yeah, you're dead. Welcome to the waiting room." << endl;
 		cout << "Destination: Out this game.Time remaining : You tell me, I'm not good with time." << endl;
@@ -218,7 +233,7 @@ int main() {
 	return 0;
 }
 int monstergen() {
-	
+	return rand() % 4;
 }
 void ItemGen() {
 	int item = rand() % 100 + 1;
@@ -240,19 +255,19 @@ void BattleSystem(int MonsterType) {
 	srand(time(NULL));
 
 	switch (MonsterType) {
-	case OCTOROK:
-		cout << "An octorok appears!" << endl;
+	case skeleton:
+		cout << "A skeleton appears!" << endl;
 		MonsterHealth = 20;
 		break;
-	case ICEDEMON:
-		cout << "An ice demon appears!" << endl;
-		MonsterHealth = 40;
+	case silverfish:
+		cout << "Would you look at that. Everyone's favorite enemy, the silverfish!" << endl;
+		MonsterHealth = 10;
 		break;
-	case FIREBAT:
+	case couple:
 		cout << "A fire bat appears!" << endl;
 		MonsterHealth = 10;
 		break;
-	case DRAGON:
+	case EssenceOfCave:
 		cout << "A dragon appears!" << endl;
 		MonsterHealth = 100;
 		break;
@@ -267,7 +282,7 @@ void BattleSystem(int MonsterType) {
 			//FIGHT CASE/////////////////////////////////////////////////
 		case 'f':
 			//flame sword hits harder on ice enemies
-			if (MonsterType == 2 && WeaponsAndArmor[0].compare("flame sword") == 0) {
+			if (MonsterType == 2 && items[1].compare == true) {
 				damage = rand() % 20;
 				cout << "Your flame sword slices through the frost for " << damage << " damage." << endl;
 			}
@@ -334,7 +349,7 @@ void BattleSystem(int MonsterType) {
 
 		//MONSTER ATTACK!///////////////////////////////////////
 
-		if (MonsterType == OCTOROK) {
+		/*if (MonsterType == OCTOROK) {
 			damage = rand() % 20 + 10;
 			cout << "The octorok spits a rock and hits you for " << damage << endl;
 			PlayerHealth -= damage;
